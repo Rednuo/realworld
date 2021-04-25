@@ -9,7 +9,6 @@
           <span class="btn btn-sm btn-primary" type="submit" @click="onSubmit(article)">提交评论</span>
         </div>
       </form>
-
       <div class="card" v-for="comment in comments" :key="comment.id">
         <div class="card-block">
           <p class="card-text">{{comment.body}}</p>
