@@ -5,7 +5,6 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">Red</a>
             <ul class="nav navbar-nav pull-xs-right">
-
               <li class="nav-item">
                   <!-- Add "active" class when you're on that page" -->
                   <nuxt-link to="/" exact class="nav-link">首页</nuxt-link>
@@ -38,7 +37,6 @@
                   <nuxt-link class="nav-link" to="register">注册</nuxt-link>
                 </li>
               </template>
-            
             </ul>
         </div>
     </nav>
