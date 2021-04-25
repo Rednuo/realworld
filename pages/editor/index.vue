@@ -2,7 +2,6 @@
   <div class="editor-page">
   <div class="container page">
     <div class="row">
-
       <div class="col-md-10 offset-md-1 col-xs-12">
         <form >
           <fieldset>
@@ -25,7 +24,6 @@
           </fieldset>
         </form>
       </div>
-
     </div>
   </div>
 </div>
