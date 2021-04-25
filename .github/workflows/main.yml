@@ -53,5 +53,5 @@ jobs:
         wget https://github.com/Rednuo/realworld/releases/latest/download/release.tgz 
         -O release.tgz 
         tar zxvf release.tgz
-        npm install --production 
+        npm install --production
         pm2 reload pm2.config.json
