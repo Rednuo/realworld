@@ -3,8 +3,8 @@
 
   <div class="banner">
     <div class="container">
-      <h1 class="logo-font">conduit</h1>
-      <p>分享知识.</p>
+      <h1 class="logo-font">知了</h1>
+      <p>知之为知之，不知为不知.</p>
     </div>
   </div>
   <div class="container page">

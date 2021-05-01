@@ -60,6 +60,7 @@
 
 <script>
 import {getArticles,addFavorite,deleteFavorite} from '@/api/article.js'
+
 import {mapState} from 'vuex'
 export default {
   middleware:'authenticated',
@@ -84,8 +85,8 @@ export default {
           favorited:store.state.user.username
       })
       const {articles,articlesCount}=tab==='fav_feed'?favArticleRes.data:myArticleRes.data
-      console.log(articles)
       articles.forEach(article=>article.favoriteDisabled=false)
+      
       return {
         articles,
         articlesCount,

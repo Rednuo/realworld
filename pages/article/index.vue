@@ -4,7 +4,7 @@
   <div class="banner">
     <div class="container">
       <h1>{{article.title}}</h1>
-      <article-meta :article="article" />
+      <article-meta :article="article" :profile="profile"/>
     </div>
   </div>
 
@@ -15,7 +15,7 @@
     <hr />
 
     <div class="article-actions">
-      <article-meta :article="article" />
+      <article-meta :article="article" :profile="profile"/>
     </div>
 
     <div class="row">
@@ -31,18 +31,25 @@
 
 <script>
 import {getArticle} from '@/api/article'
+import {getProfile} from '@/api/user.js'
 import MarkdownIt from 'markdown-it'
 import articleMeta from './components/article-meta.vue'
 import ArticleComment from './components/article-comment.vue'
 export default {
     name:"ArticleIndex",
-    async asyncData({params}){
+    async asyncData({params,store}){
       const {data} =await getArticle(params.slug)
       const {article}=data
       const md=new MarkdownIt()
       article.body=md.render(article.body)
+      article.favoriteDisabled=false
+      const profileRes=await getProfile(article.author.username)
+      const {profile}=profileRes.data
+      console.log(profile)
+      profile.followDisabled=false
       return {
-        article:article
+        article:article,
+        profile
       }
     },
     components: { articleMeta, ArticleComment },

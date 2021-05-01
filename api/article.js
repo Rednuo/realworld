@@ -30,6 +30,7 @@ export const deleteFavorite =slug=>{
           url:`/api/articles/${slug}/favorite`,
     })
 }    
+   
 //获取文章详情
 export const getArticle =slug=>{
     return request({

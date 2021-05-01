@@ -3,7 +3,7 @@
       <!-- 顶部导航 -->
     <nav class="navbar navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Red</a>
+            <a class="navbar-brand" href="index.html">知了</a>
             <ul class="nav navbar-nav pull-xs-right">
               <li class="nav-item">
                   <!-- Add "active" class when you're on that page" -->
@@ -45,9 +45,9 @@
     <!-- 底部 -->
     <footer>
       <div class="container">
-        <a href="/" class="logo-font">Red</a>
+        <a href="/" class="logo-font">知了</a>
         <span class="attribution">
-          An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design licensed under MIT.
+          知之为知之，不知为不知
         </span>
       </div>
     </footer>

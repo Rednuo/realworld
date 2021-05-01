@@ -19,13 +19,13 @@
           </button>
         </template>
         <template v-else>
-          <button class="btn btn-sm btn-outline-secondary" :class="{active:article.author.following}">
+          <button class="btn btn-sm btn-outline-secondary" :class="{active:article.author.following}" @click="onFollow(profile)" :disabled="profile.followDisabled">
             <i class="ion-plus-round"></i>
             &nbsp;
-            关注 {{article.author.username}} <span class="counter">(10)</span>
+            {{profile.following?'取消关注':'关注'}} {{article.author.username}}
           </button>
           &nbsp;
-          <button class="btn btn-sm btn-outline-primary" :class="{active:article.author.favorited}">
+          <button class="btn btn-sm btn-outline-primary" :class="{active:article.favorited}" @click="onFavorite(article)" :disabled="article.favoriteDisabled">
             <i class="ion-heart"></i>
             &nbsp;
             喜欢 <span class="counter">({{article.favoritesCount}})</span>
@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import {deleteArticle} from '@/api/article.js'
+import {deleteArticle,addFavorite,deleteFavorite} from '@/api/article.js'
+import {addFollow,deleteFollow} from '@/api/user.js'
 import {mapState} from 'vuex'
 export default {
     name:'ArticleMeta',
@@ -44,11 +45,15 @@ export default {
         article:{
             type:Object,
             required:true
+        },
+        profile:{
+          type:Object,
+          required:true
         }
     },
     data(){
         return {
-            isLoading:false
+            isLoading:false,
         }
     },
     computed:{
@@ -58,6 +63,32 @@ export default {
       async goEditor(){
         const slug=this.article.slug
         this.$router.push(`/editor?slug=${slug}`)
+      },
+      async onFavorite(article){
+        article.favoriteDisabled=true
+        if(article.favorited){
+          await deleteFavorite(article.slug)
+          article.favorited=false
+          article.favoritesCount+=-1
+        }else{
+          await addFavorite(article.slug)
+          article.favorited=true
+          article.favoritesCount+=1
+        }
+        article.favoriteDisabled=false
+      },
+      async onFollow(profile){
+        profile.followDisabled=true
+        if(profile.following){
+          const profile=await deleteFollow(this.article.author.username)
+          console.log(profile)
+          profile.following=false
+        }else{
+          const profile=await addFollow(this.article.author.username)
+          console.log(profile)
+          profile.following=true
+        }
+        profile.followDisabled=false
       },
       async goDelete(){
         const slug=this.article.slug
