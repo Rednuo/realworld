@@ -45,7 +45,7 @@
           <nuxt-link :to="{name:'article',params:{slug:article.slug}}" class="preview-link">
             <h1>{{article.title}}</h1>
             <p>{{article.description}}</p>
-            <span>详情...</span>
+            <span>详情wq...</span>
             <ul class="tag-list">
               <li class="tag-default tag-pill tag-outline" v-for="(tag,index) in article.tagList" :key="index">{{tag}}</li>
             </ul>
